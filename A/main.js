@@ -1,4 +1,4 @@
-let CANVAS_SIZE = 1080
+let CANVAS_SIZE = 960
 let LOOP_DURATION = 2
 let pointer
 
@@ -21,6 +21,7 @@ function preload() {
 }
 
 function setup() {
+	
 	userStartAudio()
 	createCanvas(CANVAS_SIZE, CANVAS_SIZE, WEBGL)
 	noCursor()
@@ -28,16 +29,18 @@ function setup() {
 	let xx
 	let yy
 	let green
-	let type
+
+	letter.resize(CANVAS_SIZE, CANVAS_SIZE)
+	pointer.resize(50, 0)
 
 	for (let i = 0; i < 500; i++) {
-		xx = random(width)
-		yy = random(width)
+		xx = random(CANVAS_SIZE)
+		yy = random(CANVAS_SIZE)
 		green = letter.get(int(xx), int(yy))[1]
 
 		while (green == 0) {
-			xx = random(width)
-			yy = random(width)
+			xx = random(CANVAS_SIZE)
+			yy = random(CANVAS_SIZE)
 			green = letter.get(int(xx), int(yy))[1]
 		}
 
@@ -50,16 +53,17 @@ function setup() {
 
 function draw() {
 	background(colors.red)
+	
 
 	if (mouseX > width / 2 && pmouseX <= width / 2) {
-		fast.play()
+		fast.loop()
 		slow.stop()
 		click1.play()
 		distance = -50
 	}
 
 	if (mouseX < width / 2 && pmouseX >= width / 2) {
-		slow.play()
+		slow.loop()
 		fast.stop()
 		click2.play()
 		distance = -50
