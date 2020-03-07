@@ -15,7 +15,7 @@ class Eye {
 
 	draw() {
 		stroke(colors.black)
-		strokeWeight(CANVAS_SIZE / 70)
+		strokeWeight(CANVAS_SIZE / 85)
 		fill(colors.white)
 		circle(this.CENTER_X, this.CENTER_Y, this.radius)
 
@@ -49,6 +49,7 @@ class Eye {
 			this.ex += 0.1 * (CANVAS_SIZE / 2 - CANVAS_SIZE / 10 - this.ex)
 			this.x += 0.1 * (this.CENTER_X - this.x)
 			this.y += 0.1 * (this.CENTER_Y - this.y)
+
 			if (!this.blink) {
 				push()
 				translate(this.x, this.y)
