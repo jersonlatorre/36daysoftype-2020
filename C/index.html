@@ -2,13 +2,20 @@
 <html lang="en">
 
 <head>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js" defer></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.min.js" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/p5@0.10.1/lib/p5.js" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/p5@0.10.1/lib/addons/p5.sound.js" defer></script>
 	<script src="colors.js" defer></script>
 	<script src="main.js" defer></script>
+	<script>
+		document.ontouchmove = function (event) {
+			event.preventDefault();
+		}
+	</script>
 	<title>C</title>
 	<style>
+		html,
 		body {
+			position: fixed;
 			margin: 0;
 			display: flex;
 			justify-content: center;
