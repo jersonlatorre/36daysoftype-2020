@@ -1,4 +1,4 @@
-let CANVAS_SIZE = 1080
+let CANVAS_SIZE = 850
 let LOOP_DURATION = 2
 let pointer
 let timer = 0

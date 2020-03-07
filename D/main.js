@@ -1,4 +1,4 @@
-let CANVAS_SIZE = 1080
+let CANVAS_SIZE = 850
 let pointer
 let timer = 0
 let tree
@@ -17,8 +17,10 @@ function preload() {
 
 function setup() {
 	createCanvas(CANVAS_SIZE, CANVAS_SIZE)
-	tree = new Tree()
 	noCursor()
+	letterImage.resize(CANVAS_SIZE, CANVAS_SIZE)
+	pointer.resize(50, 0)
+	tree = new Tree()
 }
 
 function draw() {
@@ -52,12 +54,13 @@ function draw() {
 }
 
 function mousePressed() {
-	tree.start(mouseX, mouseY)
+	if (tree.isAnimationFinished){
+		tree.start(mouseX, mouseY)
+	}
 	clickSound.play()
 }
 
 function startFade() {
 	isFading = true
-	console.log('START FADE')
 	fadeTimer = 0
 }

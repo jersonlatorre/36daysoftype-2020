@@ -1,4 +1,4 @@
-let CANVAS_SIZE = 1080
+let CANVAS_SIZE = 850
 let LOOP_DURATION = 2
 let pointer
 
@@ -8,13 +8,13 @@ let fly
 let flySound
 
 let leftEyePosition = {
-	x: CANVAS_SIZE / 2,
-	y: CANVAS_SIZE / 2 + 160
+	x: CANVAS_SIZE / 2 + CANVAS_SIZE / 25,
+	y: CANVAS_SIZE / 2 + CANVAS_SIZE / 7
 }
 
 let rightEyePosition = {
-	x: CANVAS_SIZE / 2,
-	y: CANVAS_SIZE / 2 - 160
+	x: CANVAS_SIZE / 2 + CANVAS_SIZE / 25,
+	y: CANVAS_SIZE / 2 - CANVAS_SIZE / 7
 }
 
 function preload() {
@@ -28,6 +28,8 @@ function setup() {
 	rectMode(CENTER, CENTER)
 	smooth()
 	noCursor()
+
+	pointer.resize(50, 0)
 
 	leftEye = new Eye(leftEyePosition.x, leftEyePosition.y)
 	rightEye = new Eye(rightEyePosition.x, rightEyePosition.y)

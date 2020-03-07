@@ -6,21 +6,21 @@ class Eye {
 		this.y = y
 		this.targetX = x
 		this.targetY = y
-		this.ex = x - 120
-		this.ey = y - 120
-		this.radius = 300
+		this.ex = x - CANVAS_SIZE / 10
+		this.ey = y - CANVAS_SIZE / 10
+		this.radius = CANVAS_SIZE / 3.85
 		this.timer = 0
 		this.blink = false
 	}
 
 	draw() {
 		stroke(colors.black)
-		strokeWeight(12)
+		strokeWeight(CANVAS_SIZE / 70)
 		fill(colors.white)
 		circle(this.CENTER_X, this.CENTER_Y, this.radius)
 
 		if (mouseX > CANVAS_SIZE / 2 - 100) {
-			this.ex += 0.1 * (CANVAS_SIZE / 2 - 130 - 85 - this.ex)
+			this.ex += 0.1 * (CANVAS_SIZE / 2 - CANVAS_SIZE / 6 - this.ex)
 			this.targetX += 0.15 * (mouseX - this.targetX)
 			this.targetY += 0.15 * (mouseY - this.targetY)
 
@@ -46,7 +46,7 @@ class Eye {
 					this.blink = false
 				}, 100)
 			}
-			this.ex += 0.1 * (CANVAS_SIZE / 2 - 140 - this.ex)
+			this.ex += 0.1 * (CANVAS_SIZE / 2 - CANVAS_SIZE / 10 - this.ex)
 			this.x += 0.1 * (this.CENTER_X - this.x)
 			this.y += 0.1 * (this.CENTER_Y - this.y)
 			if (!this.blink) {
@@ -62,7 +62,6 @@ class Eye {
 				push()
 				translate(this.x, this.y)
 				stroke(colors.black)
-				strokeWeight(15)
 				line(0, -this.radius / 4, 0, this.radius / 4)
 				pop()
 			}
@@ -70,8 +69,8 @@ class Eye {
 
 		fill(colors.black)
 		noStroke()
-		rect(this.ex, this.CENTER_Y, 85, 280)
-		rect(this.ex, CANVAS_SIZE / 2 - 8, 85, 10)
-		rect(this.ex, CANVAS_SIZE / 2 + 8, 85, 10)
+		rect(this.ex, this.CENTER_Y, CANVAS_SIZE / 11, CANVAS_SIZE / 4.5)
+		rect(this.ex, CANVAS_SIZE / 2 - CANVAS_SIZE / 70, CANVAS_SIZE / 11, CANVAS_SIZE / 55)
+		rect(this.ex, CANVAS_SIZE / 2 + CANVAS_SIZE / 70, CANVAS_SIZE / 11, CANVAS_SIZE / 55)
 	}
 }

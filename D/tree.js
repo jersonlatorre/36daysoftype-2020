@@ -5,17 +5,16 @@ class Tree {
 	hullPoints = []
 
 	preBranchesCount = -1
-	speed = 3
-	pd
-	MIN_DISTANCE = 12
-	MAX_DISTANCE = 40
-	isAnimationFinished = false
+	speed = CANVAS_SIZE / 300
+	MIN_DISTANCE = CANVAS_SIZE / 90
+	MAX_DISTANCE = CANVAS_SIZE / 27
+	isAnimationFinished = true
 
 	constructor() {
 		this.pd = new PoissonDiskSampling({
 			shape: [ CANVAS_SIZE, CANVAS_SIZE ],
-			minDistance: 12,
-			maxDistance: 500,
+			minDistance: CANVAS_SIZE / 80,
+			maxDistance: CANVAS_SIZE / 2,
 			tries: 30,
 			distanceFunction: function(p) {
 				let c = letterImage.get(p[0], p[1])
@@ -29,8 +28,7 @@ class Tree {
 	}
 
 	start(x, y) {
-		console.log('START ANIMATION')
-
+		this.isAnimationFinished = false
 		let points = this.pd.getAllPoints()
 		points.forEach((p) => {
 			this.leaves.push(new Leaf(createVector(p[0], p[1])))
@@ -43,10 +41,8 @@ class Tree {
 	}
 
 	clear() {
-		console.log('CLEAR')
 		this.leaves = []
 		this.branches = []
-		this.isAnimationFinished = false
 		this.preBranchesCount = -1
 		this.generatePoints()
 	}
@@ -104,15 +100,15 @@ class Tree {
 		})
 
 		if (this.branches.length == this.preBranchesCount) {
-			if (this.branches.length > 0) {
+			if (this.branches.length > 0 && !this.isAnimationFinished) {
 				this.isAnimationFinished = true
-				console.log('END ANIMATION')
-
+				console.log('ACTIVADO!')
 				setTimeout(() => {
 					backgroundColor = colors.blue
+					// this.isAnimationFinished = true
 					this.clear()
 				}, 1000)
-
+				
 				setTimeout(() => {
 					startFade()
 				}, 800)
