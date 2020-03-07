@@ -16,13 +16,12 @@ function preload() {
 	letter = loadImage('assets/a.png')
 	click1 = loadSound('assets/click1.wav')
 	click2 = loadSound('assets/click2.wav')
-	slow = loadSound('assets/slow.mp3')
-	fast = loadSound('assets/fast.mp3')
+	// slow = loadSound('assets/slow.mp3')
+	// fast = loadSound('assets/fast.mp3')
 }
 
 function setup() {
-	
-	userStartAudio()
+	// userStartAudio()
 	createCanvas(CANVAS_SIZE, CANVAS_SIZE, WEBGL)
 	noCursor()
 
@@ -53,19 +52,25 @@ function setup() {
 
 function draw() {
 	background(colors.red)
-	
 
-	if (mouseX > width / 2 && pmouseX <= width / 2) {
-		fast.loop()
-		slow.stop()
-		click1.play()
+	if (mouseX > width / 2) {
+		// if (!fast.isLooping()) fast.loop()
+		// if (slow.isLooping()) slow.stop()
 		distance = -50
+
+		if (pmouseX <= width / 2) {
+			click1.play()
+		}
 	}
 
-	if (mouseX < width / 2 && pmouseX >= width / 2) {
-		slow.loop()
-		fast.stop()
-		click2.play()
+	if (mouseX < width / 2) {
+		// if (!slow.isLooping()) slow.loop()
+		// if (fast.isLooping()) fast.stop()
+		
+		if (pmouseX >= width / 2) {
+			click2.play()
+		}
+
 		distance = -50
 	}
 
