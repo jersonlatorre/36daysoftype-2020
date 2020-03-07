@@ -2,5 +2,4 @@
 
 This repository contains the source code of all my posts for the @36daysoftype contest.
 
-[@jerson.latorre](www.instagram.com/jerson.latorre)
-
+[@jerson.latorre](https://www.instagram.com/)
