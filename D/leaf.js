@@ -1,7 +1,7 @@
 class Leaf {
 	constructor(position) {
 		this.position = position
-		this.radius = 4
+		this.radius = CANVAS_SIZE / 250
 	}
 
 	draw() {

@@ -1,16 +1,16 @@
 class Tree {
-	leaves = []
-	branches = []
-	preHullPoints = []
-	hullPoints = []
-
-	preBranchesCount = -1
-	speed = CANVAS_SIZE / 300
-	MIN_DISTANCE = CANVAS_SIZE / 90
-	MAX_DISTANCE = CANVAS_SIZE / 27
-	isAnimationFinished = true
-
 	constructor() {
+		this.leaves = []
+		this.branches = []
+		this.preHullPoints = []
+		this.hullPoints = []
+
+		this.preBranchesCount = -1
+		this.speed = CANVAS_SIZE / 300
+		this.MIN_DISTANCE = CANVAS_SIZE / 90
+		this.MAX_DISTANCE = CANVAS_SIZE / 27
+		this.isAnimationFinished = true
+
 		this.pd = new PoissonDiskSampling({
 			shape: [ CANVAS_SIZE, CANVAS_SIZE ],
 			minDistance: CANVAS_SIZE / 80,
@@ -87,7 +87,6 @@ class Tree {
 		this.preHullPoints = []
 		this.hullPoints = []
 		this.branches.forEach((branch) => {
-			// this.preHullPoints.push([ branch.position.x, branch.position.y ])
 			if (branch.counter > 0) {
 				let newDirection = branch.direction.mult(1 / branch.counter)
 				let newPosition = p5.Vector.add(branch.position, newDirection)
@@ -102,13 +101,11 @@ class Tree {
 		if (this.branches.length == this.preBranchesCount) {
 			if (this.branches.length > 0 && !this.isAnimationFinished) {
 				this.isAnimationFinished = true
-				console.log('ACTIVADO!')
 				setTimeout(() => {
 					backgroundColor = colors.blue
-					// this.isAnimationFinished = true
 					this.clear()
 				}, 1000)
-				
+
 				setTimeout(() => {
 					startFade()
 				}, 800)
@@ -126,9 +123,5 @@ class Tree {
 		this.branches.forEach((branch) => {
 			branch.draw()
 		})
-
-		noFill()
-		fill('red')
-		noStroke()
 	}
 }

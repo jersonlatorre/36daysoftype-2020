@@ -19,7 +19,7 @@ function setup() {
 	createCanvas(CANVAS_SIZE, CANVAS_SIZE)
 	noCursor()
 	letterImage.resize(CANVAS_SIZE, CANVAS_SIZE)
-	pointer.resize(50, 0)
+	pointer.resize(40, 0)
 	tree = new Tree()
 }
 
@@ -44,20 +44,21 @@ function draw() {
 
 	noFill()
 	stroke(colors.red)
-	strokeWeight(10)
-	circle(mouseX, mouseY, 50)
+	strokeWeight(CANVAS_SIZE / 100)
+	circle(mouseX, mouseY, CANVAS_SIZE / 20)
 
-	stroke(colors.white)
-	strokeWeight(5)
-	circle(mouseX, mouseY, 25)
+	stroke(colors.gray)
+	strokeWeight(CANVAS_SIZE / 150)
+	circle(mouseX, mouseY, CANVAS_SIZE / 40)
 	image(pointer, mouseX, mouseY)
 }
 
-function mousePressed() {
+function touchEnded() {
 	if (tree.isAnimationFinished){
 		tree.start(mouseX, mouseY)
 	}
 	clickSound.play()
+	return false
 }
 
 function startFade() {
