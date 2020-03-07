@@ -29,7 +29,7 @@ function setup() {
 	smooth()
 	noCursor()
 
-	pointer.resize(50, 0)
+	pointer.resize(40, 0)
 
 	leftEye = new Eye(leftEyePosition.x, leftEyePosition.y)
 	rightEye = new Eye(rightEyePosition.x, rightEyePosition.y)

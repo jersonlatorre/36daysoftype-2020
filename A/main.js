@@ -30,7 +30,7 @@ function setup() {
 	let green
 
 	letter.resize(CANVAS_SIZE, CANVAS_SIZE)
-	pointer.resize(50, 0)
+	pointer.resize(40, 0)
 
 	for (let i = 0; i < 500; i++) {
 		xx = random(CANVAS_SIZE)

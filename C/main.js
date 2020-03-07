@@ -21,7 +21,7 @@ function setup() {
 	strokeCap(ROUND)
 	strokeJoin(ROUND)
 
-	pointer.resize(50, 0)
+	pointer.resize(40, 0)
 
 	// song.amp(0.25)
 	// song.play()
