@@ -1,4 +1,4 @@
-let CANVAS_SIZE = 1080
+let CANVAS_SIZE = 700
 let pointer
 
 let keyC
@@ -27,8 +27,8 @@ function setup() {
 	canvas = createCanvas(CANVAS_SIZE, CANVAS_SIZE)
 	noCursor()
 	keys.push(new Key('C'), new Key('D'), new Key('E'), new Key('C#'), new Key('D#'))
-	drums = EDrums('x*o*x*o*x*o*x*o*', 1 / 8)
-	// drums = EDrums('x.*ox*o*x.*ox.o.', 1 / 14)
+	// drums = EDrums('x*o*x*o*x*o*x*o*', 1 / 8)
+	drums = EDrums('x.*ox*o*x.*ox.o.', 1 / 14)
 	drums.hat.fx.add(Distortion())
 	drums.snare.snappy = 0.4
 	drums.kick.decay = 0.1
