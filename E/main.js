@@ -34,7 +34,7 @@ function setup() {
 	drums.kick.decay = 0.1
 	drums.hat.decay = 0.01
 
-	drums.amp = 1.2
+	drums.amp = 1
 
 	// synth = Synth({ amp: 0.5, maxVoices: 4, waveform: 'Sine', attack: ms(1), decay: ms(150) })
 	synth = Synth2({
@@ -47,7 +47,7 @@ function setup() {
 		decay: ms(100),
 		cutoff: 0.4
 	})
-	r = Reverb({ roomSize: 0.8, damping: 1 })
+	r = Reverb({ roomSize: 0.85, damping: 1 })
 	synth.fx.add(r)
 }
 
