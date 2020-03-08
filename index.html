@@ -4,24 +4,40 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>36 Days of Type</title>
+	<title>36 Interactive Types</title>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-159928162-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-159928162-1');
+	</script>
 	<style>
+		.noselect {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
 		body {
 			background-color: white;
 		}
 
 		.content {
-			margin-top: 100px;
+			margin-top: 120px;
 			max-width: 700px;
 		}
 
 		.content .title {
-			/* font-family: 'Open Sans', sans-serif; */
 			font-weight: 900;
 			width: 100%;
 			margin-bottom: 50px;
@@ -30,11 +46,21 @@
 		.content .description {
 			font-family: 'Open Sans', sans-serif;
 			font-weight: 400;
-			margin-bottom: 25px;
+			margin-bottom: 40px;
 		}
 
 		.post {
 			padding: 12px 12px 12px 12px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.post .working-on {
+			font-family: 'Open Sans', sans-serif;
+			color: #bbb;
+			font-size: 0.9em;
+			letter-spacing: .1mm;
 		}
 
 		.post img {
@@ -52,10 +78,12 @@
 
 <body>
 	<div class="content container">
-		<h1 class="title">36 days of type 2020</h1>
+		<h1 class="title">. 36 interactive types</h1>
 		<div class="description">
 			<p>
-				Hi! I am Jerson and here you can play with the interactive version of all <a href="http://www.instagram.com/jerson.latorre">my instagram posts</a> for the <a href="http://www.instagram.com/36daysoftype">@36daysoftype</a> contest.
+				Hi! My name is <b>Jerson La Torre</b>. I am an <b>Interactive Media Developer</b> living in Lima, Perú.
+			</p>
+			<p>Here you can play with all the interactive version of <a href="http://www.instagram.com/jerson.latorre">my instagram posts</a> for the <a href="http://www.instagram.com/36daysoftype">@36daysoftype</a> contest. If you want to see the code, feel free tu visit <a href="https://github.com/jersonlatorre">my github profile</a>.
 			</p>
 		</div>
 
@@ -80,6 +108,11 @@
 				<a href="D/">
 					<img src="_thumbs/d.png" alt="" width="100%">
 				</a>
+			</div>
+			<div class="post col-sm-4">
+				<div class="working-on noselect">
+					...working on letter <b>E</b>
+				</div>
 			</div>
 		</div>
 	</div>
