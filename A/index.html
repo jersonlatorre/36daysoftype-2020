@@ -9,6 +9,13 @@
 	<script src="dot.js" defer></script>
 	<script src="main.js" defer></script>
 	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-159928162-1');
+	</script>
+	<script>
 		document.ontouchmove = function (event) {
 			event.preventDefault();
 		}
