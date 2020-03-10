@@ -163,7 +163,7 @@ function draw() {
 				transitionTimer = 0
 				state = PLAYING
 			}
-			
+
 			ball.draw()
 			fill(0, 255 * sin(transitionTimer * PI))
 			square(CANVAS_SIZE / 2, CANVAS_SIZE / 2, CANVAS_SIZE)
@@ -178,13 +178,14 @@ function draw() {
 				rect(CANVAS_SIZE / 2, i * h + h / 2 - winStripesOffset, CANVAS_SIZE, h)
 			}
 			image(winScreen, 0, 0)
-			break;
+			break
 	}
 
 	image(pointer, mouseX, mouseY)
 }
 
 function touchStarted() {
+	userStartAudio()
 	ball.onTouchStarted()
 }
 
