@@ -66,7 +66,7 @@ class Ball {
 				let p = createVector(this.body.position.x, this.body.position.y)
 				let magnitude = p5.Vector.sub(p, m).mag()
 				magnitude = constrain(magnitude, 0, CANVAS_SIZE / 8)
-				magnitude = map(magnitude, 0, CANVAS_SIZE / 8, 0, 0.35)
+				magnitude = map(magnitude, 0, CANVAS_SIZE / 8, 0, 0.1)
 				let force = p5.Vector.sub(p, m).normalize().mult(magnitude)
 				Matter.Body.applyForce(this.body, this.body.position, Matter.Vector.create(force.x, force.y))
 				break

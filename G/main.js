@@ -1,10 +1,10 @@
-let CANVAS_SIZE = 1080
+let CANVAS_SIZE = 700
 let backgroundImage
 let hitSound
 let levelupSound
 let winSound
 let winScreen
-let level = 6
+let level = -3
 
 let engine
 let ball
@@ -34,8 +34,8 @@ function preload() {
 }
 
 function resetGame() {
-	level += 4
-	if (level >= 16) {
+	level += 3
+	if (level >= 15) {
 		state = SUPER_WIN
 		winSound.amp(0.6)
 		winSound.play()
