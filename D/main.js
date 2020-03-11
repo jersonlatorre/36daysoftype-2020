@@ -54,8 +54,10 @@ function draw() {
 }
 
 function touchEnded() {
-	if (tree.isAnimationFinished){
+	if (tree.isAnimationFinished) {
 		tree.start(mouseX, mouseY)
+	} else {
+		tree.addBranch(mouseX, mouseY)
 	}
 	clickSound.play()
 	return false

@@ -33,9 +33,12 @@ class Tree {
 		points.forEach((p) => {
 			this.leaves.push(new Leaf(createVector(p[0], p[1])))
 		})
+		this.addBranch(x, y)
+	}
 
+	addBranch(x, y) {
 		let rootPosition = createVector(x, y)
-		let rootDirection = createVector(0, -this.speed)
+		let rootDirection = createVector(0, 0)
 		let branch = new Branch(null, rootPosition, rootDirection)
 		this.branches.push(branch)
 	}
