@@ -1,8 +1,8 @@
-let CANVAS_SIZE = 700
+let CANVAS_SIZE = 1080
 let STRIP_WIDTH = CANVAS_SIZE > 1000 ? 3 : 2
 let SETRIPED_IMAGE_SIZE = 2
 let N_FRAMES = 10
-let N_IMAGES = 3
+let N_IMAGES = 2
 
 let FACTOR = CANVAS_SIZE / 1080
 let currentImage = 0
@@ -14,10 +14,7 @@ let font
 let frame
 let clickSound
 let isStripesVisible = true
-let toggleStripeButtonX = 943 * FACTOR
-let toggleStripeButtonY = 997 * FACTOR
-let toggleStripeButtonRadius = 32 * FACTOR
-let selectImageButtonX = 900 * FACTOR
+let selectImageButtonX = 947 * FACTOR
 let selectImageButtonY = 997 * FACTOR
 let selectImageButtonRadius = 32 * FACTOR
 
@@ -63,22 +60,12 @@ function draw() {
 
 	// current image
 	image(scanimages[currentImage], 0, 0)
-	if (isStripesVisible) {
-		image(stripedImage, mouseX / 5 - SETRIPED_IMAGE_SIZE * CANVAS_SIZE / 2, 0)
-	}
+	image(stripedImage, mouseX, 0)
 
 	// frame
 	image(frame, 0, 0)
 
 	// buttons
-	if (isStripesVisible) {
-		fill(colors.red)
-	} else {
-		fill(colors.black)
-	}
-	noStroke()
-	circle(toggleStripeButtonX, toggleStripeButtonY, toggleStripeButtonRadius)
-
 	fill(colors.gray)
 	circle(selectImageButtonX, selectImageButtonY, selectImageButtonRadius)
 	textAlign(CENTER, CENTER)
@@ -94,7 +81,7 @@ function draw() {
 	textAlign(LEFT)
 	fill(255, 120)
 	textSize(27 * FACTOR)
-	text('Scanimator 1.0', 120 * FACTOR, 990 * FACTOR)
+	text('Scanimator 1.1', 120 * FACTOR, 990 * FACTOR)
 }
 
 function createBaseImage() {
@@ -129,14 +116,6 @@ function createStripedImage() {
 }
 
 function mousePressed() {
-	if (
-		dist(mouseX, mouseY, toggleStripeButtonX - toggleStripeButtonRadius / 2, toggleStripeButtonY) <
-		toggleStripeButtonRadius / 2
-	) {
-		isStripesVisible = !isStripesVisible
-		clickSound.play()
-	}
-
 	if (
 		dist(mouseX, mouseY, selectImageButtonX - selectImageButtonRadius / 2, selectImageButtonY) <
 		selectImageButtonRadius / 2
