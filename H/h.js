@@ -32,7 +32,6 @@ class H {
 			this.targetT = map(this.targetT, -1, 1, 0.1, 1)
 		}
 
-		
 		this.t = lerp(this.t, this.targetT, this.LERP_FACTOR)
 		this.z = lerp(this.z, this.targetZ, this.LERP_FACTOR)
 		this.color = lerpColor(this.color, this.targetColor, this.LERP_FACTOR * 2)
