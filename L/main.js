@@ -1,15 +1,16 @@
-let CANVAS_SIZE = 1080
-let pointer
+let CANVAS_SIZE = 700
+let FACTOR = CANVAS_SIZE / 1080
+let hand
 
 let l
 
 function preload() {
-	pointer = loadImage('assets/pointer.svg')
+	hand = loadImage('assets/hand.svg')
 }
 
 function setup() {
 	createCanvas(CANVAS_SIZE, CANVAS_SIZE)
-	pointer.resize(CANVAS_SIZE / 25, 0)
+	hand.resize(FACTOR * CANVAS_SIZE / 18, 0)
 	noCursor()
 
 	l = new L()
@@ -18,5 +19,5 @@ function setup() {
 function draw() {
 	background(colors.blue)
 	l.draw()
-	image(pointer, mouseX, mouseY)
+	image(hand, mouseX - 16 * FACTOR, mouseY)
 }

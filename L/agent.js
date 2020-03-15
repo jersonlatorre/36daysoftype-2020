@@ -1,8 +1,8 @@
 class Agent {
 	constructor(parent) {
-		this.MAX_SPEED = random(1.5, 2.5)
-		this.MAX_STEER = 0.4
-		this.SEPARATE_DISTANCE = 30
+		this.MAX_SPEED = random(2 * FACTOR, 3 * FACTOR)
+		this.MAX_STEER = 0.3 * FACTOR
+		this.SEPARATE_DISTANCE = 30 * FACTOR
 		this.MAX_HISTORY = 8
 		this.history = []
 
@@ -15,59 +15,102 @@ class Agent {
 		this.target = this.p2
 		this.agents = parent.agents
 		this.isDead = false
+
+		this.STATE_MOVING = 0
+		this.STATE_DYING = 1
+		this.state = this.STATE_MOVING
 	}
 
 	draw() {
-		// seek force
-		let desiredSeek = this.target.copy().sub(this.position).normalize().mult(this.MAX_SPEED)
+		switch (this.state) {
+			case this.STATE_MOVING: {
+				// seek force
+				let desiredSeek = this.target.copy().sub(this.position).normalize().mult(this.MAX_SPEED)
 
-		// separat force
-		let desiredSeparate = createVector(0, 0)
-		let nNeighbors = 0
-		this.agents.forEach((agent) => {
-			let distance = dist(this.position.x, this.position.y, agent.position.x, agent.position.y)
-			if (distance > 0 && distance < this.SEPARATE_DISTANCE) {
-				let desiredAux = this.position.copy().sub(agent.position).normalize().mult(this.MAX_SPEED)
-				desiredSeparate.add(desiredAux)
-				nNeighbors++
+				// separate force
+				let desiredSeparate = createVector(0, 0)
+				let nNeighbors = 0
+				this.agents.forEach((agent) => {
+					let distance = this.squaredDistance(this.position.x, this.position.y, agent.position.x, agent.position.y)
+					if (distance > 0 && distance < agent.SEPARATE_DISTANCE * agent.SEPARATE_DISTANCE) {
+						let desiredAux = this.position.copy().sub(agent.position).normalize().mult(this.MAX_SPEED)
+						desiredSeparate.add(desiredAux)
+						nNeighbors++
+					}
+				})
+
+				if (nNeighbors > 0) desiredSeparate.mult(1 / nNeighbors)
+
+				// total force applied
+				let desired = p5.Vector.add(desiredSeek, desiredSeparate.mult(10))
+				let steer = desired.copy().sub(this.velocity).limit(this.MAX_STEER)
+				this.velocity.add(steer)
+				this.position.add(this.velocity)
+
+				// tail size truncated
+				this.history.push(this.position.copy())
+				if (this.history.length == this.MAX_HISTORY) {
+					this.history.splice(0, 1)
+				}
+
+				// change target or die
+				if (this.squaredDistance(this.position.x, this.position.y, this.p2.x, this.p2.y) < (3600 * FACTOR * FACTOR)) {
+					this.target = this.p3
+				}
+
+				if (this.squaredDistance(this.position.x, this.position.y, this.p3.x, this.p3.y) < 900 * FACTOR * FACTOR) {
+					this.state = this.STATE_DYING
+				}
+
+				// draw
+				stroke(colors.white)
+				strokeJoin(ROUND)
+				strokeWeight(14 * FACTOR)
+				noFill()
+				beginShape()
+				this.history.forEach((p) => {
+					vertex(p.x, p.y)
+				})
+				endShape()
+
+				noStroke()
+				fill(colors.black)
+				circle(this.position.x, this.position.y, 8 * FACTOR)
+				break
 			}
-		})
 
-		if (nNeighbors > 0) desiredSeparate.mult(1 / nNeighbors)
+			case this.STATE_DYING: {
+				this.position.add(this.p3.copy().sub(this.position).mult(0.1))
 
-		// total force applied
-		let desired = p5.Vector.add(desiredSeek, desiredSeparate.mult(2))
-		let steer = desired.copy().sub(this.velocity).limit(this.MAX_STEER)
-		this.velocity.add(steer)
-		this.position.add(this.velocity)
-		this.history.push(this.position.copy())
+				// tail size truncated
+				this.history.push(this.position.copy())
+				if (this.history.length == this.MAX_HISTORY) {
+					this.history.splice(0, 1)
+				}
 
-		if (this.history.length == this.MAX_HISTORY) {
-			this.history.splice(0, 1)
+				let distance = this.squaredDistance(this.position.x, this.position.y, this.p3.x, this.p3.y)
+				if (distance < 9 * FACTOR) {
+					this.isDead = true
+				}
+
+				// draw
+				stroke(255)
+				strokeJoin(ROUND)
+				strokeWeight(14 * FACTOR)
+				noFill()
+				beginShape()
+				this.history.forEach((p) => {
+					vertex(p.x, p.y)
+				})
+				endShape()
+
+				noStroke()
+				fill(30)
+				circle(this.position.x, this.position.y, 8 * FACTOR)
+
+				break
+			}
 		}
-
-		stroke(colors.white)
-		strokeJoin(ROUND)
-		strokeWeight(14)
-		noFill()
-		beginShape()
-		this.history.forEach((p) => {
-			vertex(p.x, p.y)
-		})
-		endShape()
-
-		// change target or die
-		if (this.squaredDistance(this.position.x, this.position.y, this.p2.x, this.p2.y) < 2500) {
-			this.target = this.p3
-		}
-
-		if (this.squaredDistance(this.position.x, this.position.y, this.p3.x, this.p3.y) < 256) {
-			this.isDead = true
-		}
-
-		noStroke()
-		fill(colors.black)
-		circle(this.position.x, this.position.y, 8)
 	}
 
 	squaredDistance(x1, y1, x2, y2) {
