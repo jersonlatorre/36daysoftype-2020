@@ -1,0 +1,9 @@
+class Item {
+	constructor() {
+
+	}
+
+	draw() {
+
+	}
+}
