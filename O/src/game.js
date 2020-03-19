@@ -249,9 +249,12 @@ class Game {
 				rect(0, 0, 5000, 5000)
 				fill(colors.white)
 				if (Global.level < levels.length - 1) {
+					textSize(40)
 					text('level ' + (Global.level + 1) + '/' + levels.length, 0, 0)
 				} else {
-					text('final level', 0, 0)
+					fill(colors.red)
+					textSize(60)
+					text('FINAL LEVEL', 0, 0)
 				}
 
 				this.time += deltaTime / 1000
