@@ -1,23 +1,25 @@
-let CANVAS_SIZE = 1080
-let pointer
 let game
+let enemyImage
+let waterImage
+let soapImage
 
 function preload() {
-	pointer = loadImage('assets/pointer.svg')
+	enemyImage = loadImage('assets/enemy.png')
+	waterImage = loadImage('assets/water.png')
+	soapImage = loadImage('assets/soap.png')
 }
 
 function setup() {
-	createCanvas(CANVAS_SIZE, CANVAS_SIZE)
-	pointer.resize(CANVAS_SIZE / 25, 0)
-	noCursor()
-
+	createCanvas(700, 700)
 	game = new Game()
+
+	enemyImage.resize(Global.ENEMY_HEIGHT, 0)
 }
 
 function draw() {
-	translate(CANVAS_SIZE / 2, CANVAS_SIZE / 2)
+	translate(width / 2, width / 2)
+	scale(width / 1080)
 	game.draw()
-	image(pointer, mouseX - CANVAS_SIZE / 2, mouseY - CANVAS_SIZE / 2)
 }
 
 function keyPressed() {
