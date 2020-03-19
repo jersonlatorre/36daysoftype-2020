@@ -34,7 +34,7 @@ function preload() {
 }
 
 function setup() {
-	createCanvas(1080, 1080)
+	createCanvas(700, 700)
 	textFont(font)
 	textSize(40)
 	textAlign(CENTER, CENTER)
