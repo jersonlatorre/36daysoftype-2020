@@ -4,19 +4,22 @@ class ItemState {
 
 class Item {
 	constructor(angle) {
-		this.state = ItemState.IDLE
+		this.MAX_OSCILLATION_AMPLITUDE = 20
 		this.angle = angle
-		this.isDead = false
 		this.type = random([ 'soap', 'water' ])
+		if (this.type == 'soap') this.color = '#ffbf0c55'
+		if (this.type == 'water') this.color = '#69bdff55'
+		this.restart()
+	}
+
+	restart() {
+		this.state = ItemState.IDLE
+		this.isDead = false
 		let x = 0.5 * (Global.PLANET_RADIUS + Global.ITEM_HEIGHT) * cos(this.angle)
 		let y = 0.5 * (Global.PLANET_RADIUS + Global.ITEM_HEIGHT) * sin(this.angle)
 		this.position = createVector(x, y)
-		this.MAX_OSCILLATION_AMPLITUDE = 20
 		this.oscillationAmplitude = 0
 		this.oscillationTime = random(0, 10)
-
-		if (this.type == 'soap') this.color = '#ffbf0c55'
-		if (this.type == 'water') this.color = '#69bdff55'
 	}
 
 	draw() {
@@ -47,8 +50,12 @@ class Item {
 				rotate(PI / 2 + rotation)
 
 				// check collision
-				if (dist(Global.player.position.x, Global.player.position.y, this.position.x, this.position.y) < Global.ITEM_HEIGHT * 1.5) {
+				if (
+					dist(Global.player.position.x, Global.player.position.y, this.position.x, this.position.y) <
+					Global.ITEM_HEIGHT * 1.5
+				) {
 					Global.effects.push(new Explosion(this.position.x, this.position.y, this.color))
+					itemSound.play()
 					this.isDead = true
 				}
 

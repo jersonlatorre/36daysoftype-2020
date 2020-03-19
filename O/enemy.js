@@ -7,7 +7,13 @@ class EnemyState {
 
 class Enemy {
 	constructor(angle) {
+		this.firstAngle = angle
 		this.angle = angle
+		this.angleSpeed = random([ -0.002, 0.002, -0.004, 0.004 ])
+		this.restart()
+	}
+
+	restart() {
 		let x = 0.5 * (Global.PLANET_RADIUS + Global.ENEMY_HEIGHT) * cos(this.angle)
 		let y = 0.5 * (Global.PLANET_RADIUS + Global.ENEMY_HEIGHT) * sin(this.angle)
 		this.position = createVector(x, y)
@@ -15,25 +21,36 @@ class Enemy {
 		this.scale = 1
 		this.targetScale = 1.4
 		this.isDead = false
+		this.angle = this.firstAngle
 	}
 
 	draw() {
 		switch (this.state) {
 			case EnemyState.IDLE: {
+				this.angle += this.angleSpeed
+				let x = 0.5 * (Global.PLANET_RADIUS + Global.ENEMY_HEIGHT) * cos(this.angle)
+				let y = 0.5 * (Global.PLANET_RADIUS + Global.ENEMY_HEIGHT) * sin(this.angle)
+				this.position = createVector(x, y)
+
 				// check collisions
 				if (
 					dist(Global.player.position.x, Global.player.position.y, this.position.x, this.position.y) <
 					Global.ENEMY_HEIGHT * 0.6
 				) {
-					this.state = EnemyState.HIT
-					Global.game.state = GameState.LOSE
-					Global.player.state = PlayerState.DIE
+					if (Global.player.state != PlayerState.DIE) {
+						this.state = EnemyState.HIT
+						if (!hitSound.isPlaying()) hitSound.play()
+						bgmSound.stop()
+						Global.game.state = GameState.LOSE_LEVEL
+						Global.player.state = PlayerState.DIE
+					}
 				}
 
 				push()
 				let rotation = atan2(this.position.y, this.position.x)
 				translate(this.position.x, this.position.y)
 				rotate(PI / 2 + rotation)
+				rotate(this.angleSpeed * millis())
 				imageMode(CENTER)
 				image(enemyImage, 0, 0)
 				pop()
