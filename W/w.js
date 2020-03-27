@@ -93,7 +93,7 @@ class W {
 		})
 
 		for (let i = 0; i < this.tmpScaledDraw.length - 1; i++) {
-			let w = constrain(0.2 * (this.tmpScaledDraw[i].weight + this.tmpScaledDraw[i + 1].weight), 0, 20)
+			let w = constrain(0.2 * (this.tmpScaledDraw[i].weight + this.tmpScaledDraw[i + 1].weight), 0, 20 * FACTOR)
 			strokeWeight(map(w, 0, 20 * FACTOR, 1 * FACTOR, 6 * FACTOR))
 			line(
 				this.tmpScaledDraw[i].position.x,
