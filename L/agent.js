@@ -3,7 +3,7 @@ class Agent {
 		this.MAX_SPEED = random(2 * FACTOR, 3 * FACTOR)
 		this.MAX_STEER = 0.3 * FACTOR
 		this.SEPARATE_DISTANCE = 30 * FACTOR
-		this.MAX_HISTORY = 8
+		this.MAX_HISTORY = 1
 		this.history = []
 
 		this.p1 = parent.p1
