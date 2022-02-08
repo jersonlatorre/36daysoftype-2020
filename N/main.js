@@ -1,4 +1,4 @@
-let CANVAS_SIZE = 700
+let CANVAS_SIZE = 1080
 let FACTOR = CANVAS_SIZE / 1080
 let pointer
 let n
