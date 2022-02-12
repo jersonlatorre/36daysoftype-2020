@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="g135" transform="matrix(1.05117,0,0,1.03431,0,0)">
+        <g id="Capa1">
+            <rect id="rect132" x="0" y="0" width="45.663" height="46.408" style="fill:white;"/>
+        </g>
+    </g>
+    <path id="path3653" d="M48,24C48,37.166 37.166,48 24,48C10.834,48 0,37.166 0,24C0,10.834 10.834,0 24,0C37.166,0 48,10.834 48,24Z" style="fill:white;"/>
+    <path id="path4540" d="M40,24C40,32.777 32.777,40 24,40C15.223,40 8,32.777 8,24C8,15.223 15.223,8 24,8C32.777,8 40,15.223 40,24Z" style="fill:white;"/>
+    <g transform="matrix(0.91584,0,0,0.91584,10.2624,7.51488)">
+        <g id="use7203">
+            <path id="path144" d="M19.017,17.998L19.017,18.002C19.017,20.205 17.204,22.018 15,22.018C12.796,22.018 10.983,20.205 10.983,18.002L10.983,17.998C10.983,15.795 12.796,13.982 15,13.982C17.204,13.982 19.017,15.795 19.017,17.998Z"/>
+        </g>
+    </g>
+</svg>
